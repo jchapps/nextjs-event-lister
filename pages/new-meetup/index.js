@@ -1,11 +1,18 @@
 import React from 'react';
+import NewMeetupForm from '../../components/meetups/NewMeetupForm'
 
-function index(props) {
+function NewMeetupPage(props) {
+  function addMeetupHandler(enteredMeetupData) {
+    console.log(enteredMeetupData)
+  }
+
+
+
   return (
     <div>
-
+      <NewMeetupForm onAddMeetup = {addMeetupHandler}/>
     </div>
   );
 }
 
-export default index;
+export default NewMeetupPage;
