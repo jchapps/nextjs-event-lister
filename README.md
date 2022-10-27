@@ -1,3 +1,9 @@
+
+# 🛹 Tokyo Skate Hub
+
+Web app built in Next.js for you to discover skatepark events in Tokyo. MongoDB Backend connected via serverless API.
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
