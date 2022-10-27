@@ -46,7 +46,7 @@ export async function getStaticProps() {
         id: location._id.toString(),
       })),
     },
-    revalidate: 10,
+    revalidate: 1,
   };
 }
 
