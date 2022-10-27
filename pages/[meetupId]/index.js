@@ -1,15 +1,22 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { MongoClient, ObjectId } from "mongodb";
 import MeetupDetail from "../../components/meetups/MeetupDetail";
+import Head from "next/head";
 
 function MeetupDetails(props) {
   return (
-    <MeetupDetail
-      image={props.meetupData.image}
-      title={props.meetupData.title}
-      address={props.meetupData.address}
-      description={props.meetupData.description}
-    />
+    <Fragment>
+      <Head>
+        <title>{props.meetupData.title}</title>
+        <meta name="description" content={props.meetupData.description} />
+      </Head>
+      <MeetupDetail
+        image={props.meetupData.image}
+        title={props.meetupData.title}
+        address={props.meetupData.address}
+        description={props.meetupData.description}
+      />
+    </Fragment>
   );
 }
 
@@ -23,7 +30,7 @@ export async function getStaticPaths() {
 
   const locations = await locationsCollection.find({}, { _id: 1 }).toArray();
 
-  client.close()
+  client.close();
 
   return {
     fallback: false,
@@ -43,9 +50,11 @@ export async function getStaticProps(context) {
 
   const locationsCollection = db.collection("locations");
 
-  const selectedLocation = await locationsCollection.findOne({_id: ObjectId(locationId)})
+  const selectedLocation = await locationsCollection.findOne({
+    _id: ObjectId(locationId),
+  });
 
-  client.close()
+  client.close();
 
   return {
     props: {
@@ -54,8 +63,8 @@ export async function getStaticProps(context) {
         title: selectedLocation.title,
         address: selectedLocation.address,
         image: selectedLocation.image,
-        description: selectedLocation.description
-      }
+        description: selectedLocation.description,
+      },
     },
   };
 }

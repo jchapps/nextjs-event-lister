@@ -1,11 +1,16 @@
-import React from 'react';
-import MeetupList from '../components/meetups/MeetupList'
-import { MongoClient } from 'mongodb';
+import React from "react";
+import MeetupList from "../components/meetups/MeetupList";
+import { MongoClient } from "mongodb";
+import Head from "next/head";
 
 function HomePage(props) {
   return (
     <div>
-      <MeetupList meetups={props.meetups}/>
+      <Head>
+        <title>Tokyo Skateparks</title>
+        <meta name="description" content="Browse a list of Tokyo skateparks" />
+      </Head>
+      <MeetupList meetups={props.meetups} />
     </div>
   );
 }
@@ -21,7 +26,6 @@ function HomePage(props) {
 // }
 
 export async function getStaticProps() {
-
   const client = await MongoClient.connect(
     `mongodb+srv://jdchappelow:${process.env.DB_PASS}@cluster0.cz1vfb6.mongodb.net/?retryWrites=true&w=majority`
   ); //connect to my db
@@ -31,19 +35,19 @@ export async function getStaticProps() {
 
   const locations = await locationsCollection.find().toArray();
 
-  client.close()
+  client.close();
 
   return {
     props: {
-      meetups: locations.map(location => ({
+      meetups: locations.map((location) => ({
         title: location.title,
         address: location.address,
         image: location.image,
-        id: location._id.toString()
-      }))
+        id: location._id.toString(),
+      })),
     },
-    revalidate: 10
-  }
-};
+    revalidate: 10,
+  };
+}
 
 export default HomePage;
