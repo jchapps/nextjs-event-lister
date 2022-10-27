@@ -9,10 +9,10 @@ function MainNavigation() {
       <nav>
         <ul>
           <li>
-            <Link href='/'>All Skateparks</Link>
+            <Link href='/'>All Skate Events</Link>
           </li>
           <li>
-            <Link href='/new-meetup'>Add New Skatepark</Link>
+            <Link href='/new-meetup'>Add New Skate Event</Link>
           </li>
         </ul>
       </nav>
