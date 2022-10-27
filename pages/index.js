@@ -35,9 +35,17 @@ const FAKE_MEETUPS = [
 function HomePage(props) {
   return (
     <div>
-      <MeetupList meetups={FAKE_MEETUPS}/>
+      <MeetupList meetups={props.meetups}/>
     </div>
   );
 }
+
+export async function getStaticProps() {
+  return {
+    props: {
+      meetups: FAKE_MEETUPS
+    }
+  }
+};
 
 export default HomePage;
