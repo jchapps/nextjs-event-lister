@@ -5,7 +5,7 @@ function MainNavigation() {
 
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>Skateparks</div>
+      <div className={classes.logo}>Tokyo Skater Hub</div>
       <nav>
         <ul>
           <li>
