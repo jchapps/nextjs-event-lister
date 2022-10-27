@@ -40,11 +40,22 @@ function HomePage(props) {
   );
 }
 
+// export async function getServerSideProps(context) {
+//   const req = context.req
+//   const rest = context.res
+//   return {
+//     props: {
+//       meetups: FAKE_MEETUPS
+//     }
+//   }
+// }
+
 export async function getStaticProps() {
   return {
     props: {
       meetups: FAKE_MEETUPS
-    }
+    },
+    revalidate: 30
   }
 };
 
